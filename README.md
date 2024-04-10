@@ -20,7 +20,7 @@ Make the script executable and move it to a directory in your PATH:
 
 ```bash
 chmod +x kubectl-getc/kubectl-getc
-sudo mv kubectl-getc/kubectl-getc /usr/local/bin
+sudo cp kubectl-getc/kubectl-getc /usr/local/bin
 ```
 
 ## Usage
@@ -55,22 +55,22 @@ Status condition with the get subcommand
 
 Status condition with the getc subcommand
 ```
-    status:
-      conditions:
-        - type: Initialized
-          lastProbeTime: null
-          lastTransitionTime: "2024-04-10T01:30:36Z"
-          status: "True"
-        - type: Ready
-          lastProbeTime: null
-          lastTransitionTime: "2024-04-10T01:30:43Z"
-          status: "True"
-        - type: ContainersReady
-          lastProbeTime: null
-          lastTransitionTime: "2024-04-10T01:30:43Z"
-          status: "True"
-        - type: PodScheduled
-          lastProbeTime: null
-          lastTransitionTime: "2024-04-10T01:30:36Z"
-          status: "True"
+  status:
+    conditions:
+      - type: Initialized
+        lastProbeTime: null
+        lastTransitionTime: "2024-04-10T01:30:36Z"
+        status: "True"
+      - type: Ready
+        lastProbeTime: null
+        lastTransitionTime: "2024-04-10T01:30:43Z"
+        status: "True"
+      - type: ContainersReady
+        lastProbeTime: null
+        lastTransitionTime: "2024-04-10T01:30:43Z"
+        status: "True"
+      - type: PodScheduled
+        lastProbeTime: null
+        lastTransitionTime: "2024-04-10T01:30:36Z"
+        status: "True"
 ```
