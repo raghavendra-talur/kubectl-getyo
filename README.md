@@ -1,5 +1,5 @@
 # kubectl-getc
-A simple kubectl plugin that provides alternative get command that shows yaml formatted output with ordered fields in status condition. It shows the condition type first, followed by status, reason, message, observedGeneration and lastTransitionTime.
+A simple kubectl plugin that provides alternative get command that shows type as the first field in the status condition.
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your system:
@@ -58,27 +58,19 @@ Status condition with the getc subcommand
     status:
       conditions:
         - type: Initialized
-          status: "True"
-          reason: null
-          message: null
-          observedGeneration: null
+          lastProbeTime: null
           lastTransitionTime: "2024-04-10T01:30:36Z"
+          status: "True"
         - type: Ready
-          status: "True"
-          reason: null
-          message: null
-          observedGeneration: null
+          lastProbeTime: null
           lastTransitionTime: "2024-04-10T01:30:43Z"
+          status: "True"
         - type: ContainersReady
-          status: "True"
-          reason: null
-          message: null
-          observedGeneration: null
+          lastProbeTime: null
           lastTransitionTime: "2024-04-10T01:30:43Z"
-        - type: PodScheduled
           status: "True"
-          reason: null
-          message: null
-          observedGeneration: null
+        - type: PodScheduled
+          lastProbeTime: null
           lastTransitionTime: "2024-04-10T01:30:36Z"
+          status: "True"
 ```
