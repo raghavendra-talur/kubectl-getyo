@@ -16,10 +16,9 @@ Clone the repository:
 git clone https://github.com/raghavendra-talur/kubectl-getc.git
 ```
 
-Make the script executable and move it to a directory in your PATH:
+Copy the script to a directory in your PATH:
 
 ```bash
-chmod +x kubectl-getc/kubectl-getc
 sudo cp kubectl-getc/kubectl-getc /usr/local/bin
 ```
 
