@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# This script acts as a kubectl plugin to reorder condition fields in -o yaml output.
+
+# Check for yq and exit if not found
+if ! command -v yq &> /dev/null
+then
+    echo "Error: yq is required but it's not installed. Please install yq and try again."
+    exit 1
+fi
+
+# Function to show usage
+show_usage() {
+    echo "Usage: kubectl getc <resource> [options]"
+    echo "Note: This plugin processes output in YAML format. Please do not specify conflicting output options."
+}
+
+# Check if at least one argument is provided
+if [ "$#" -lt 1 ]; then
+    show_usage
+    exit 1
+fi
+
+# Check for conflicting options
+for arg in "$@"; do
+    if [[ "$arg" == "-o" || "$arg" == "--output" || "$arg" == "-w" || "$arg" == "--watch" ]]; then
+        echo "Error: Conflicting output option detected."
+        show_usage
+        exit 1
+    fi
+done
+
+
+# Use kubectl to get the requested resource in YAML format
+YAML_OUTPUT=$(kubectl get "$@" -o yaml)
+
+if [ $? -ne 0 ]; then
+    echo "Error fetching Kubernetes resource."
+    exit 1
+fi
+
+# Process the YAML output to reorder condition fields
+echo "$YAML_OUTPUT" | yq e '
+  # Apply transformations for conditions, handling both lists and single items gracefully
+  .status.conditions[]? |= {
+    "type": .type,
+    "status": .status,
+    "reason": .reason,
+    "message": .message,
+    "observedGeneration": .observedGeneration,
+    "lastTransitionTime": .lastTransitionTime
+  }
+  # Attempt to apply the same transformation to items in a list, if present
+  | .items[].status.conditions[]? |= {
+    "type": .type,
+    "status": .status,
+    "reason": .reason,
+    "message": .message,
+    "observedGeneration": .observedGeneration,
+    "lastTransitionTime": .lastTransitionTime
+  }
+' -
+
