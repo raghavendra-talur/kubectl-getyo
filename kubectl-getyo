@@ -11,7 +11,7 @@ fi
 
 # Function to show usage
 show_usage() {
-    echo "Usage: kubectl getc <resource> [options]"
+    echo "Usage: kubectl getyo <resource> [options]"
     echo "Note: This plugin processes output in YAML format. Please do not specify conflicting output options."
 }
 

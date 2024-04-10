@@ -1,5 +1,7 @@
-# kubectl-getc
-A simple kubectl plugin that provides alternative get command that shows type as the first field in the status condition.
+# kubectl-getyo
+A simple kubectl plugin that provides alternative get command that shows the yaml formatted output with some modifications.
+Modifications:
+- type as the first field in the status condition
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your system:
@@ -8,25 +10,25 @@ Before you begin, ensure you have the following installed on your system:
 - yq (version 4.x or higher) - A portable command-line YAML, JSON, and XML processor.
 
 ## Installation
-To install the kubectl-getc plugin, follow these steps:
+To install the kubectl-getyo plugin, follow these steps:
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/raghavendra-talur/kubectl-getc.git
+git clone https://github.com/raghavendra-talur/kubectl-getyo.git
 ```
 
 Copy the script to a directory in your PATH:
 
 ```bash
-sudo cp kubectl-getc/kubectl-getc /usr/local/bin
+sudo cp kubectl-getyo/kubectl-getyo /usr/local/bin
 ```
 
 ## Usage
-To use the plugin, simply replace get subcommand with getc in your regular kubectl get commands. For example:
+To use the plugin, simply replace get subcommand with getyo in your regular kubectl get commands. For example:
 
 ```bash
-kubectl getc pods
+kubectl getyo pods
 ```
 
 ## Sample output
@@ -52,7 +54,7 @@ Status condition with the get subcommand
       type: PodScheduled
 ```
 
-Status condition with the getc subcommand
+Status condition with the getyo subcommand
 ```
   status:
     conditions:
