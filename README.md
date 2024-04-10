@@ -1,5 +1,5 @@
 # kubectl-getc
-A simple kubectl plugin that orders fields in status condition to always show the type first, followed by status, reason, message, observedGeneration and lastTransitionTime.
+A simple kubectl plugin that provides alternative get command that shows yaml formatted output with ordered fields in status condition. It shows the condition type first, followed by status, reason, message, observedGeneration and lastTransitionTime.
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your system:
@@ -24,10 +24,10 @@ sudo mv kubectl-getc/kubectl-getc /usr/local/bin
 ```
 
 ## Usage
-To use the plugin, simply replace get subcommand with getc in your regular kubectl get commands when using yaml output. For example:
+To use the plugin, simply replace get subcommand with getc in your regular kubectl get commands. For example:
 
 ```bash
-kubectl getc pods -o yaml
+kubectl getc pods
 ```
 
 ## Sample output
