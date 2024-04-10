@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script acts as a kubectl plugin to reorder condition fields in -o yaml output.
+# This script acts as a kubectl plugin to make the type field in status condition to always be the first field.
 
 # Check for yq and exit if not found
 if ! command -v yq &> /dev/null
@@ -39,25 +39,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Process the YAML output to reorder condition fields
 echo "$YAML_OUTPUT" | yq e '
-  # Apply transformations for conditions, handling both lists and single items gracefully
-  .status.conditions[]? |= {
-    "type": .type,
-    "status": .status,
-    "reason": .reason,
-    "message": .message,
-    "observedGeneration": .observedGeneration,
-    "lastTransitionTime": .lastTransitionTime
-  }
+  # Apply transformation for conditions, ensuring 'type' is first
+  .status.conditions[]? |= {"type": .type} + .
   # Attempt to apply the same transformation to items in a list, if present
-  | .items[].status.conditions[]? |= {
-    "type": .type,
-    "status": .status,
-    "reason": .reason,
-    "message": .message,
-    "observedGeneration": .observedGeneration,
-    "lastTransitionTime": .lastTransitionTime
-  }
+  | .items[].status.conditions[]? |= {"type": .type} + .
 ' -
 
