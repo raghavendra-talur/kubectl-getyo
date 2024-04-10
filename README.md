@@ -56,20 +56,20 @@ Status condition with the getc subcommand
 ```
   status:
     conditions:
-      - type: Initialized
-        lastProbeTime: null
-        lastTransitionTime: "2024-04-10T01:30:36Z"
-        status: "True"
-      - type: Ready
-        lastProbeTime: null
-        lastTransitionTime: "2024-04-10T01:30:43Z"
-        status: "True"
-      - type: ContainersReady
-        lastProbeTime: null
-        lastTransitionTime: "2024-04-10T01:30:43Z"
-        status: "True"
-      - type: PodScheduled
-        lastProbeTime: null
-        lastTransitionTime: "2024-04-10T01:30:36Z"
-        status: "True"
+    - type: Initialized
+      lastProbeTime: null
+      lastTransitionTime: "2024-04-10T01:30:36Z"
+      status: "True"
+    - type: Ready
+      lastProbeTime: null
+      lastTransitionTime: "2024-04-10T01:30:43Z"
+      status: "True"
+    - type: ContainersReady
+      lastProbeTime: null
+      lastTransitionTime: "2024-04-10T01:30:43Z"
+      status: "True"
+    - type: PodScheduled
+      lastProbeTime: null
+      lastTransitionTime: "2024-04-10T01:30:36Z"
+      status: "True"
 ```
